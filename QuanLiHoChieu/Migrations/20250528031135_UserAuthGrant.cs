@@ -55,17 +55,46 @@ namespace QuanLiHoChieu.Migrations
             migrationBuilder.Sql("CREATE USER lt_user FOR LOGIN lt_login;");
             migrationBuilder.Sql("CREATE USER gs_user FOR LOGIN gs_login;");
 
+            // Add users to your roles
+            migrationBuilder.Sql("EXEC sp_addrolemember 'XT', xt_user;");
+            migrationBuilder.Sql("EXEC sp_addrolemember 'XD', xd_user;");
+            migrationBuilder.Sql("EXEC sp_addrolemember 'LT', lt_user;");
+            migrationBuilder.Sql("EXEC sp_addrolemember 'GS', gs_user;");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // Add to db_owner (careful with this)
             migrationBuilder.Sql("ALTER ROLE db_owner ADD MEMBER xt_user;");
             migrationBuilder.Sql("ALTER ROLE db_owner ADD MEMBER xd_user;");
             migrationBuilder.Sql("ALTER ROLE db_owner ADD MEMBER lt_user;");
             migrationBuilder.Sql("ALTER ROLE db_owner ADD MEMBER gs_user;");
 
-            // Add users to your roles
-            migrationBuilder.Sql("EXEC sp_addrolemember 'XT', xt_user;");
-            migrationBuilder.Sql("EXEC sp_addrolemember 'XD', xd_user;");
-            migrationBuilder.Sql("EXEC sp_addrolemember 'LT', lt_user;");
-            migrationBuilder.Sql("EXEC sp_addrolemember 'GS', gs_user;");
+           
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
