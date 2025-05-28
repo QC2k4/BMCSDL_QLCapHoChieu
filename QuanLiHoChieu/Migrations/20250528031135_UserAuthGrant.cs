@@ -71,21 +71,21 @@ namespace QuanLiHoChieu.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             // Implement drop statements for rollback (optional but recommended)
-            migrationBuilder.Sql("DROP VIEW IF EXISTS View_LT_Approved;");
-            migrationBuilder.Sql("DROP USER IF EXISTS xt_user;");
-            migrationBuilder.Sql("DROP USER IF EXISTS xd_user;");
-            migrationBuilder.Sql("DROP USER IF EXISTS lt_user;");
-            migrationBuilder.Sql("DROP USER IF EXISTS gs_user;");
+            //migrationBuilder.Sql("DROP VIEW IF EXISTS View_LT_Approved;");
+            //migrationBuilder.Sql("DROP USER IF EXISTS xt_user;");
+            //migrationBuilder.Sql("DROP USER IF EXISTS xd_user;");
+            //migrationBuilder.Sql("DROP USER IF EXISTS lt_user;");
+            //migrationBuilder.Sql("DROP USER IF EXISTS gs_user;");
 
-            migrationBuilder.Sql("DROP LOGIN IF EXISTS xt_login;");
-            migrationBuilder.Sql("DROP LOGIN IF EXISTS xd_login;");
-            migrationBuilder.Sql("DROP LOGIN IF EXISTS lt_login;");
-            migrationBuilder.Sql("DROP LOGIN IF EXISTS gs_login;");
+            //migrationBuilder.Sql("DROP LOGIN IF EXISTS xt_login;");
+            //migrationBuilder.Sql("DROP LOGIN IF EXISTS xd_login;");
+            //migrationBuilder.Sql("DROP LOGIN IF EXISTS lt_login;");
+            //migrationBuilder.Sql("DROP LOGIN IF EXISTS gs_login;");
 
-            migrationBuilder.Sql("DROP ROLE IF EXISTS XT;");
-            migrationBuilder.Sql("DROP ROLE IF EXISTS XD;");
-            migrationBuilder.Sql("DROP ROLE IF EXISTS LT;");
-            migrationBuilder.Sql("DROP ROLE IF EXISTS GS;");
+            //migrationBuilder.Sql("DROP ROLE IF EXISTS XT;");
+            //migrationBuilder.Sql("DROP ROLE IF EXISTS XD;");
+            //migrationBuilder.Sql("DROP ROLE IF EXISTS LT;");
+            //migrationBuilder.Sql("DROP ROLE IF EXISTS GS;");
         }
     }
 }

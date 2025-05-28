@@ -45,6 +45,7 @@ namespace QuanLiHoChieu.Migrations
                     VALUES (SYSTEM_USER, 'DELETE', 'User', SYSDATETIME());
                 END
             ");
+
             // PassportData
             migrationBuilder.Sql(@"
                 CREATE TRIGGER trg_Audit_PassportData_Insert
@@ -128,8 +129,7 @@ namespace QuanLiHoChieu.Migrations
                 BEGIN
                     SET NOCOUNT ON;
                     INSERT INTO AuditLog(Username, Action, TableName, TimeStamp)
-                    SELECT SYSTEM_USER, 'INSERT', 'XuLy', GETDATE()
-                    FROM inserted;
+                    VALUES (SYSTEM_USER, 'INSERT', 'XuLy', SYSDATETIME())
                 END
             ");
 
@@ -141,8 +141,7 @@ namespace QuanLiHoChieu.Migrations
                 BEGIN
                     SET NOCOUNT ON;
                     INSERT INTO AuditLog(Username, Action, TableName, TimeStamp)
-                    SELECT SYSTEM_USER, 'UPDATE', 'XuLy', GETDATE()
-                    FROM inserted;
+                    VALUES (SYSTEM_USER, 'INSERT', 'XuLy', SYSDATETIME())
                 END
             ");
 
@@ -153,8 +152,7 @@ namespace QuanLiHoChieu.Migrations
                 AS
                 BEGIN
                     INSERT INTO AuditLog(Username, Action, TableName, TimeStamp)
-                    SELECT SYSTEM_USER, 'DELETE', 'XuLy', GETDATE()
-                    FROM deleted;
+                    VALUES (SYSTEM_USER, 'INSERT', 'XuLy', SYSDATETIME())
                 END
             ");
 

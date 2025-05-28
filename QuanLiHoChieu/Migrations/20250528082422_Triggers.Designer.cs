@@ -12,7 +12,7 @@ using QuanLiHoChieu.Data;
 namespace QuanLiHoChieu.Migrations
 {
     [DbContext(typeof(PassportDbContext))]
-    [Migration("20250527070223_Triggers")]
+    [Migration("20250528082422_Triggers")]
     partial class Triggers
     {
         /// <inheritdoc />
