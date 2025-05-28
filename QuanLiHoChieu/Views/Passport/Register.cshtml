@@ -1,0 +1,343 @@
+﻿@model QuanLiHoChieu.Models.ViewModels.PassportFormVM
+
+@{
+    ViewData["Title"] = "Đơn Đăng Ký Cấp Hộ Chiếu";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin cá nhân</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/DangKy.css" />
+</head>
+<body>
+    <div class="admin-theme">
+        <header class="admin-header">
+            <div class="header-left">
+                <div class="header-title">
+                    <i class="fas fa-passport"></i>
+                    <span>ĐĂNG KÝ CẤP HỘ CHIẾU</span>
+                </div>
+                <nav class="admin-nav">
+                    <a href="@Url.Action("Home", "Chung")">Trang chủ</a>
+                    <a href="#" class="active">Đăng ký hộ chiếu</a>
+                    <a href="@Url.Action("Information")">Xem tình trạng hộ chiếu</a>
+                </nav>
+            </div>
+
+            <div class="user-info">
+                <button class="logout-btn" onclick="window.location.href='@Url.Action("Login","Chung")'">
+                    <i class="fas fa-sign-out-alt"></i> Đăng nhập
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <div class="form-container" style="margin-top: 160px;">
+        <div class="form-sidebar">
+            <div class="sidebar-header">
+                <h2>THÔNG TIN CÁ NHÂN</h2>
+                <p>Vui lòng điền đầy đủ thông tin bên dưới</p>
+            </div>
+
+            <ul class="sidebar-features">
+                <li>Bảo mật thông tin 100%</li>
+                <li>Quy trình đơn giản, nhanh chóng</li>
+                <li>Hỗ trợ 24/7 khi cần giúp đỡ</li>
+            </ul>
+        </div>
+
+        <div class="form-content">
+            <form asp-action="Register" method="post" enctype="multipart/form-data">
+                <!-- Section 1: Thông tin cơ bản -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">1</div>
+                        <div class="section-title">Thông tin cơ bản</div>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Họ và tên (*)</label>
+                            <input asp-for="HoTen" type="text" class="form-control" placeholder="Nguyễn Văn A">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Giới tính (*)</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input asp-for="GioiTinh" value="Nam" type="radio" checked> Nam
+                                </label>
+                                <label class="radio-option">
+                                    <input asp-for="GioiTinh" value="Nữ" type="radio"> Nữ
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ngày sinh (*)</label>
+                            <input asp-for="NgaySinh" type="date" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nơi sinh (*)</label>
+                            <input asp-for="NoiSinh" type="text" class="form-control" placeholder="Nhập nơi sinh">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Dân tộc (*)</label>
+                            <select asp-for="DanToc" id="ethnicity-select" class="form-control">
+                                <option value="">-- Chọn dân tộc --</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Tôn giáo (*)</label>
+                            <select asp-for="TonGiao" id="religion-select" class="form-control">
+                                <option value="">-- Chọn tôn giáo --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Thông tin CCCD -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">2</div>
+                        <div class="section-title">Thông tin CCCD</div>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Số CCCD (*)</label>
+                            <input asp-for="CCCD" type="text" class="form-control" placeholder="012345678901">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ngày cấp (*)</label>
+                            <input asp-for="NgayCap" type="date" class="form-control">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label">Nơi cấp (*)</label>
+                            <input asp-for="NoiCap" type="text" class="form-control" placeholder="Cục Cảnh sát quản lý hành chính">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Địa chỉ thường trú -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">3</div>
+                        <div class="section-title">Địa chỉ thường trú</div>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="province" class="form-label">Tỉnh/Thành phố (*)</label>
+                            <select id="province" class="form-control">
+                                <option value="">-- Chọn Tỉnh/Thành --</option>
+                                <!-- options dynamically loaded -->
+                            </select>
+                            <input type="hidden" name="ttTinhThanh" id="ttTinhThanh" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="district" class="form-label">Quận/Huyện (*)</label>
+                            <select id="district" class="form-control">
+                                <option value="">-- Chọn Quận/Huyện --</option>
+                                <!-- options dynamically loaded -->
+                            </select>
+                            <input type="hidden" name="ttQuanHuyen" id="ttQuanHuyen" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ward" class="form-label">Phường/Xã (*)</label>
+                            <select id="ward" class="form-control">
+                                <option value="">-- Chọn Phường/Xã --</option>
+                                <!-- options dynamically loaded -->
+                            </select>
+                            <input type="hidden" name="ttPhuongXa" id="ttPhuongXa" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Địa chỉ cụ thể (*)</label>
+                            <input asp-for="ttSoNhaDuong" type="text" class="form-control" placeholder="Số nhà, đường">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Địa chỉ tạm trú -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">4</div>
+                        <div class="section-title">Địa chỉ tạm trú</div>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="temp-province" class="form-label">Tỉnh/Thành phố</label>
+                            <select id="temp-province" class="form-control">
+                                <option value="">-- Chọn Tỉnh/Thành --</option>
+                            </select>
+                            <input type="hidden" name="thtTinhThanh" id="thtTinhThanh" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="temp-district" class="form-label">Quận/Huyện</label>
+                            <select id="temp-district" class="form-control">
+                                <option value="">-- Chọn Quận/Huyện --</option>
+                            </select>
+                            <input type="hidden" name="thtQuanHuyen" id="thtQuanHuyen" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="temp-ward" class="form-label">Phường/Xã</label>
+                            <select id="temp-ward" class="form-control">
+                                <option value="">-- Chọn Phường/Xã --</option>
+                            </select>
+                            <input type="hidden" name="thtPhuongXa" id="thtPhuongXa" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="form-label">Địa chỉ cụ thể</label>
+                            <input asp-for="thtSoNhaDuong" type="text" class="form-control" placeholder="Số nhà, đường">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Thông tin cha, mẹ -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">5</div>
+                        <div class="section-title">Thông tin cha, mẹ</div>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Hộ tên cha</label>
+                            <input asp-for="HoTenCha" type="tel" class="form-control" placeholder="Nguyễn Văn A">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ngày sinh cha</label>
+                            <input asp-for="NgaySinhCha" type="date" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Hộ tên mẹ</label>
+                            <input asp-for="HoTenMe" type="tel" class="form-control" placeholder="Nguyễn Thị B">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ngày sinh mẹ</label>
+                            <input asp-for="NgaySinhMe" type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Liên hệ -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">6</div>
+                        <div class="section-title">Thông tin liên hệ</div>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Số điện thoại (*)</label>
+                            <input asp-for="SDT" type="tel" class="form-control" placeholder="0987654321">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email (*)</label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="example@email.com">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: Ảnh -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-number">7</div>
+                        <div class="section-title">Ảnh người đề nghị</div>
+                        <div class="section-divider"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Ảnh chân dung (4x6)</label>
+                        <div class="image-upload-container">
+                            <input type="file" id="portrait" accept="image/*" name="avatar" class="image-upload-input">
+                            <label for="portrait" class="image-upload-label">
+                                <div class="image-upload-box portrait-upload-box">
+                                    <img id="portrait-preview" src="" alt="Ảnh chân dung 4x6" class="portrait-preview">
+                                    <div class="upload-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="17 8 12 3 7 8"></polyline>
+                                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                                        </svg>
+                                    </div>
+                                    <p class="upload-text">Tải lên ảnh chân dung 4x6</p>
+                                    <p class="upload-hint">(Tỷ lệ 2:3, kích thước tối đa 5MB)</p>
+                                    <div class="remove-image-btn" onclick="removeImage('portrait', event)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="upload-guide">
+                            <strong>Lưu ý:</strong> Ảnh chân dung cần đúng tỷ lệ 4x6 (2:3), nền trắng, rõ mặt, không đeo kính.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+
+                    @if (ViewBag.FormId != null)
+                    {
+                        <a href="@Url.Action("DownloadPdf", "Passport", new { formId = ViewBag.FormId })" class="submit-btn" target="_blank" style="margin-right: 10px">
+                            Tải phiếu xác nhận (PDF)
+                        </a>
+                    }
+                    <button type="submit" class="submit-btn">
+                        Gửi thông tin
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="simple-footer">
+        <p>&copy; 2025 Quản lý cấp hộ chiếu lần đầu. All rights reserved.</p>
+    </footer>
+
+    @* Sẽ thông báo lỗi hoặc thông báo thành công *@
+    @if (ViewBag.AlertMessage != null)
+    {
+        <script>
+            alert(@Html.Raw(Json.Serialize(ViewBag.AlertMessage)));
+        </script>
+    }
+    <script src="~/js/image-upload.js"></script>
+    <script src="~/js/Vietnamse-address-filler.js"></script>
+</body> 
+</html>

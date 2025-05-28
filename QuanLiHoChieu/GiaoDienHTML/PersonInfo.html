@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Cá Nhân</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --danger-color: #e74c3c;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --border-color: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--secondary-color);
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .header-title i {
+                color: var(--accent-color);
+            }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+
+        .logout-btn {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+            .logout-btn:hover {
+                background-color: #c0392b;
+                transform: translateY(-1px);
+            }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 80px auto 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-color);
+        }
+
+        .avatar {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .info-display {
+            flex: 1;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .info-label {
+            font-weight: 500;
+            width: 150px;
+            min-width: 150px;
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+
+        .info-value {
+            padding: 10px;
+            background-color: var(--light-color);
+            border-radius: 4px;
+            flex-grow: 1;
+            font-size: 14px;
+            color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .header-left {
+                margin-bottom: 10px;
+            }
+
+            .header-title {
+                font-size: 16px;
+            }
+
+            .profile-container {
+                flex-direction: column;
+                padding: 20px;
+                margin: 100px 10px 20px;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+            }
+
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .info-label {
+                width: auto;
+                margin-bottom: 5px;
+            }
+
+            .info-value {
+                width: 100%;
+            }
+
+            .logout-btn {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <i class="fas fa-user-circle"></i>
+                <span class="header-title">THÔNG TIN CÁ NHÂN</span>
+            </div>
+            <div class="header-right">
+                <img src="content/images/default-avatar.jpg" alt="Avatar" class="header-avatar">
+                <button class="logout-btn" onclick="window.location.href='/Logout'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Đăng Xuất
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-image">
+            <img src="content/images/default-avatar.jpg" alt="Ảnh đại diện" class="avatar">
+        </div>
+
+        <div class="info-display">
+            <div class="info-row">
+                <label class="info-label">Họ tên:</label>
+                <div class="info-value">Nguyễn Văn A</div>
+            </div>
+
+            <div class="info-row">
+                <label class="info-label">Ngày sinh:</label>
+                <div class="info-value">01/01/1990</div>
+            </div>
+
+            <div class="info-row">
+                <label class="info-label">Chức vụ:</label>
+                <div class="info-value">Nhân viên</div>
+            </div>
+
+            <div class="info-row">
+                <label class="info-label">Quê quán:</label>
+                <div class="info-value">Hà Nội</div>
+            </div>
+
+            <div class="info-row">
+                <label class="info-label">Địa chỉ:</label>
+                <div class="info-value">123 Đường ABC, Quận XYZ, TP.HCM</div>
+            </div>
+
+            <div class="info-row">
+                <label class="info-label">Số điện thoại:</label>
+                <div class="info-value">0123456789</div>
+            </div>
+
+            <div class="info-row">
+                <label class="info-label">Email:</label>
+                <div class="info-value">nguyenvana@example.com</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
