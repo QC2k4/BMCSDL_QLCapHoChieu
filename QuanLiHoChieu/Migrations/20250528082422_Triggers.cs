@@ -9,7 +9,7 @@ namespace QuanLiHoChieu.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            //User Auditlog
+            //User 
             migrationBuilder.Sql(@"
                 CREATE TRIGGER trg_Audit_User_Insert
                 ON [User]

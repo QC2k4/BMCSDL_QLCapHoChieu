@@ -94,6 +94,17 @@ namespace QuanLiHoChieu.Migrations
                     TimeStamp
                 FROM AuditLog;
             ");
+
+            migrationBuilder.Sql(@"
+                GRANT SELECT ON View_XT_Resident TO xt_user;
+                GRANT SELECT ON View_XD_PassportForm TO xt_user;
+
+                GRANT SELECT ON View_XD_PassportForm TO lt_user;
+
+                GRANT SELECT ON View_LT_Status TO lt_user;
+
+                GRANT SELECT ON View_GS_AuditLog TO gs_user;
+            ");
         }
 
         /// <inheritdoc />
