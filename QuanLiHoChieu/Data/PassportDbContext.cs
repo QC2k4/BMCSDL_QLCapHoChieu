@@ -46,6 +46,13 @@ namespace QuanLiHoChieu.Data
 
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<XuLy>().ToTable("XuLy", tableBuilder => {
+                tableBuilder.HasTrigger("trg_Audit_XuLy_Insert");
+            });
+            modelBuilder.Entity<TaiKhoan>().ToTable("TaiKhoan", tableBuilder => {
+                tableBuilder.HasTrigger("trg_Audit_TaiKhoan_Insert");
+            });
+
             modelBuilder.Entity<DecryptedUserVM>(e =>
             {
                 e.HasNoKey();
